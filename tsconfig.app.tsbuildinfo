@@ -1,1 +1,0 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/FolderPicker.tsx","./src/components/Library.tsx","./src/components/Reader.tsx","./src/hooks/useKeyboardNav.ts","./src/hooks/useSwipe.ts","./src/lib/library.ts","./src/lib/naturalSort.ts","./src/lib/storage.ts"],"version":"5.9.3"}
