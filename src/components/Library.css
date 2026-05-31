@@ -1,0 +1,132 @@
+.library {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.library__header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: calc(env(safe-area-inset-top, 0px) + 0.75rem) 1rem 0.75rem;
+  background: #111317;
+  border-bottom: 1px solid #23262d;
+  z-index: 5;
+}
+
+.library__brand {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.library__list {
+  flex: 1;
+  padding: 0.75rem;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.series {
+  border: 1px solid #23262d;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  background: #15171c;
+}
+
+.series--read .series__name {
+  color: #6b7280;
+}
+
+.series__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0.85rem 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+}
+.series__head:hover {
+  background: #1a1d23;
+}
+
+.series__caret {
+  display: inline-block;
+  transition: transform 0.15s ease;
+  color: #8b919c;
+  font-size: 0.8rem;
+}
+.series__caret--open {
+  transform: rotate(90deg);
+}
+
+.series__name {
+  flex: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.series__progress {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  color: #8b919c;
+}
+
+.chapters {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.3rem;
+  border-top: 1px solid #23262d;
+}
+
+.chapter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #e6e8ec;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.chapter:hover {
+  background: #1a1d23;
+}
+
+.chapter--read {
+  color: #6b7280;
+}
+
+.chapter__check {
+  width: 1rem;
+  color: #3fb950;
+  font-weight: 700;
+}
+
+.chapter__name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chapter__meta {
+  font-size: 0.78rem;
+  color: #8b919c;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
