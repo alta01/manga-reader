@@ -53,25 +53,43 @@ npm run build    # type-check + production build into dist/
 npm run preview  # preview the production build
 ```
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare (Workers static assets)
 
-The app is fully static (all logic is client-side), so any static host works.
+The app is fully static (all logic is client-side). It deploys as a Cloudflare
+**Workers static-assets** site, configured by `wrangler.jsonc` in the repo root:
+
+```jsonc
+{
+  "name": "manga-reader",
+  "compatibility_date": "2026-05-31",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
+```
+
+`not_found_handling: "single-page-application"` makes Cloudflare serve `index.html`
+for any route that doesn't match a built file — the SPA fallback (no `_redirects`
+needed for Workers).
 
 **Build settings:**
 
 - Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
 - Build output directory: `dist`
 - Node version: 20 (pinned via `.nvmrc`)
 
-**Option A — Git integration (recommended):** In the Cloudflare Pages dashboard,
-connect the `alta01/manga-reader` repository and enter the build settings above.
-Pushes auto-deploy. `public/_redirects` provides the SPA fallback.
+**Option A — Git integration (recommended):** In the Cloudflare dashboard,
+create a Worker connected to the `alta01/manga-reader` repository. With
+`wrangler.jsonc` present, the auto-detected `npx wrangler deploy` command uploads
+`dist/` as static assets. Pushes to `main` auto-deploy.
 
 **Option B — Wrangler CLI:**
 
 ```bash
 npm run build
-npx wrangler pages deploy dist --project-name manga-reader
+npx wrangler deploy
 ```
 
-(Requires your own Cloudflare authentication.)
+(Requires your own Cloudflare authentication via `wrangler login`.)
